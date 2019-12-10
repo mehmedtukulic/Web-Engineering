@@ -3,25 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "concurrently": "^5.0.1"
+  },
+  "devDependencies": {},
   "scripts": {
+    "install": "cd api && npm install && cd ../frontend && npm install",
+    "backend": "cd api && nodemon index.js",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently --kill-others \"npm run backend\" \"npm run frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "cd frontend && npm run build && cd ../api && node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mehmedtukulic/Web-Engineering.git"
   },
-  "author": "mehmed",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mehmedtukulic/Web-Engineering/issues"
   },
-  "homepage": "https://github.com/mehmedtukulic/Web-Engineering#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "connect-timeout": "^1.9.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongojs": "^3.1.0"
-  }
+  "homepage": "https://github.com/mehmedtukulic/Web-Engineering#readme"
 }

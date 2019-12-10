@@ -1,15 +1,14 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const mongojs = require('mongojs');
 const config = require('./config');
 const db = mongojs(config.MONGODB_URL);
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 
-app.use(express.static('public'));
+app.use(express.static('./../frontend/build'));
 app.use(bodyParser.json());
-
 
 
 //Express routers
