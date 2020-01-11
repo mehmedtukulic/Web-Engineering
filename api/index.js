@@ -30,10 +30,18 @@ app.use('/',(req,res,next)=>{
 
 
 //REST   
-app.get('/',(req,res)=>{
+app.get('/hello',(req,res)=>{
  res.send('Hello World');
 });
 
+app.get('/bars',(req,res)=>{
+    db.bars.find({} ,(error,docs) => {
+     if (error) {
+         throw error;
+     }
+     res.json(docs)
+    });
+   });
 
 app.post('/login', (req, res) => {
     let email = req.body.email_address;
