@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { NavLink , Link, withRouter} from 'react-router-dom';
-import logo from './../img/logo.png'; 
+import logo from './../img/shishalogo.jpg'; 
 
 const GranappNavbar = (props) => {
         return (
@@ -18,10 +18,9 @@ const GranappNavbar = (props) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link activeStyle={{ color: '#ED5035' }} as={NavLink} exact to='/'>Home</Nav.Link>
-                        <Nav.Link activeStyle={{ color: '#ED5035' }} as={NavLink} exact to='/products'>Products</Nav.Link>
-                        <Nav.Link activeStyle={{ color: '#ED5035' }} as={NavLink} exact to='/products/add'>Add New Product</Nav.Link>
-                        <Nav.Link activeStyle={{ color: '#ED5035' }} as={NavLink} to='/demo'>Demo</Nav.Link>
+                        <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/'>Home</Nav.Link>
+                        <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/products'>Bars</Nav.Link>
+                        <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/products/add'>Add New Bar</Nav.Link>
                     </Nav>
                     
                     <Form inline className="justify-content-center">

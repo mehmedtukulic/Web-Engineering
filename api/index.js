@@ -16,9 +16,9 @@ let admin_router = express.Router();
 require('./routes/admin.js')(admin_router, db, mongojs, jwt, config);
 app.use('/admin', admin_router);
 
-let bar_router = express.Router();
-require('./routes/bar.js')(bar_router, db, mongojs, jwt , config);
-app.use('/bar', bar_router);
+let public_router = express.Router();
+require('./routes/public.js')(public_router, db, mongojs, jwt , config);
+app.use('/public', public_router);
 
 //Middleware
 app.use('/',(req,res,next)=>{
@@ -30,18 +30,6 @@ app.use('/',(req,res,next)=>{
 
 
 //REST   
-app.get('/hello',(req,res)=>{
- res.send('Hello World');
-});
-
-app.get('/bars',(req,res)=>{
-    db.bars.find({} ,(error,docs) => {
-     if (error) {
-         throw error;
-     }
-     res.json(docs)
-    });
-   });
 
 app.post('/login', (req, res) => {
     let email = req.body.email_address;

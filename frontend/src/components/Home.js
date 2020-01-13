@@ -7,12 +7,9 @@ const Home = () => {
     return (
         <div>
             <Jumbotron>
-            <h1>Welcome to Gran<span style={{ color: '#ED5035' }}>App</span>.</h1>
+            <h1>Number of users : <span style={{ color: '#157EFB' }}>8</span> </h1>
             <p>
-                A fresh and affordable approach to shopping.
-            </p>
-            <p>
-                <Button variant="primary" as={NavLink} to='/products'>View products on display</Button>
+                <Button variant="primary" as={NavLink} to='/products'>View Bars</Button>
             </p>
             </Jumbotron>
         </div>
