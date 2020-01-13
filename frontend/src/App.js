@@ -1,16 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import HelloWorld from "./components/HelloWorld"; 
-
-function App() {
+import GranappNavbar from './components/GranappNavbar';
+import Home from './components/Home'
+const App = () => {
   return (
-  <div className="App">
-      <header className="App-header">
-        <HelloWorld name="Mehmed"/>
-      </header>
-  </div>
+      <div className="App">
+          <GranappNavbar />
+          <Switch>
+              <Route exact path='/' component={Home} />
+              {/* Last item in the Switch: will be matched if no other routes are matched before it. */}
+          </Switch>
+      </div>
   );
 }
 
