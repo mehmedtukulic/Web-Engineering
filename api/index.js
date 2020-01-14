@@ -52,6 +52,17 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.post('/bar', (req, res) => {
+    db.bars.insert(req.body, function(err, doc){
+        if (err) {
+            res.status(400).json({ message: `Insertion failed. Reason: ${err.errmsg}` });
+        }
+        res.json(doc);
+    });
+});
+
+
+
 app.listen(port,()=>{
     console.log('Server listening on port : '+ port);
 });

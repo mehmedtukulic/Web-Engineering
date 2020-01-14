@@ -24,4 +24,8 @@ module.exports = (router, db, mongojs, jwt, config) => {
             res.json(docs);
         });
      });
+
+    
+     
+
 }
