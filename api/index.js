@@ -44,7 +44,11 @@ app.post('/login', (req, res) => {
                     id: doc._id,
                     type: doc.type
                 }, config.JWT_SECRET);
-                res.json(token);
+                let data = [];
+                let type = doc.type;
+                data.push(token);
+                data.push(type)
+                res.status(200).send(data);
             } else
                 res.status(400).send();
         } else
@@ -52,14 +56,6 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/bar', (req, res) => {
-    db.bars.insert(req.body, function(err, doc){
-        if (err) {
-            res.status(400).json({ message: `Insertion failed. Reason: ${err.errmsg}` });
-        }
-        res.json(doc);
-    });
-});
 
 
 

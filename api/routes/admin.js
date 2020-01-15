@@ -5,7 +5,7 @@ module.exports = (router, db, mongojs, jwt, config) => {
         if(authorization) {
             jwt.verify(authorization, config.JWT_SECRET, (error, decoded) => {
                 if(error)
-                    res.status(400).send("Unauthorized access");
+                    res.status(400).send("Unauthorized");
                 else {
                     if(decoded.type == 'admin') {
                         next();
@@ -25,7 +25,14 @@ module.exports = (router, db, mongojs, jwt, config) => {
         });
      });
 
-    
+     router.post('/bar', (req, res) => {
+        db.bars.insert(req.body, function(err, doc){
+            if (err) {
+                res.status(400).json({ message: `Insertion failed. Reason: ${err.errmsg}` });
+            }
+            res.json(doc);
+        });
+    });
      
 
 }

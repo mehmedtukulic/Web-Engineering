@@ -7,13 +7,15 @@ import GranappNavbar from './components/GranappNavbar';
 import Home from './components/Home'
 import Bars from './components/Bars'
 import Addbar from './components/Addbar'
+import Login from './components/Login'
 
 const App = () => {
   return (
       <div className="App">
           <GranappNavbar />
           <Switch>
-              <Route exact path='/' component={Home} />
+              <Route exact path='/' component={Login} />
+              <Route exact path='/home' component={Home} />
               <Route exact path='/bars' component={Bars} />
               <Route exact path='/bars/add' component={Addbar} />
           </Switch>

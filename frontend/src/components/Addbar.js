@@ -24,9 +24,10 @@ class AddBar extends Component {
 
     addNewBar = (event) => {
         event.preventDefault();
-        Axios.post(`${config.BASE_URL}/bar`, 
-            { name: this.state.name, owner: this.state.owner, contact: this.state.contact , location: this.state.location }
-            ).then(response => {
+        let jwtToken = window.localStorage.getItem("jwtToken");
+        Axios.post(`${config.BASE_URL}/admin/bar`, 
+            { name: this.state.name, owner: this.state.owner, contact: this.state.contact , location: this.state.location }, 
+            { headers: { Authorization: jwtToken } }).then(response => {
                 console.log('Bar successfully added.');
                 alert('Bar successfully added.');
                 this.props.history.push('/bars');

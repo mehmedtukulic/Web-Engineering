@@ -8,7 +8,7 @@ const GranappNavbar = (props) => {
         return (
         <div id='granapp-navbar' style={{ marginBottom: '1rem' }}>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand as={NavLink} to='/'>
+                <Navbar.Brand as={NavLink} to='/home'>
                     <img 
                         src={logo}
                         height={30}
@@ -18,7 +18,7 @@ const GranappNavbar = (props) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/'>Home</Nav.Link>
+                        <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/home'>Home</Nav.Link>
                         <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/bars'>Bars</Nav.Link>
                         <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/bars/add'>Add New Bar</Nav.Link>
                     </Nav>
