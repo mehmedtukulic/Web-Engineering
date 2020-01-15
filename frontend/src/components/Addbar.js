@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
-
+import GranappNavbar from './GranappNavbar';
 import Axios from 'axios';
 import config from './../config';
 
@@ -41,6 +41,7 @@ class AddBar extends Component {
     render() {
         return (
             <div>
+                <GranappNavbar />
                 <Container>
                     <Row className='justify-content-center'>
                         <Col sm={6}>

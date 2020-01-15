@@ -11,8 +11,7 @@ import Login from './components/Login'
 
 const App = () => {
   return (
-      <div className="App">
-          <GranappNavbar />
+      <div className="App">  
           <Switch>
               <Route exact path='/' component={Login} />
               <Route exact path='/home' component={Home} />

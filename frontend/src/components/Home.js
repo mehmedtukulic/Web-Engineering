@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import GranappNavbar from './GranappNavbar';
 import { Jumbotron, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Axios from 'axios';
@@ -32,6 +32,7 @@ class Home extends Component{
     render(){
         return (
             <div>
+                <GranappNavbar />
                 <Jumbotron>
                 <h1>Number of users : <span style={{ color: '#157EFB' }}>{this.state.numberOfBars}</span></h1>
                 <p>
