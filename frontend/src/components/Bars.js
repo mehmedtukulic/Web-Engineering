@@ -38,7 +38,6 @@ class Bars extends Component {
            const { id, name, owner, contact, location } = product //destructuring
            return (
               <tr key={id}>
-                 <td>{id}</td>
                  <td>{name}</td>
                  <td>{owner}</td>
                  <td>{contact}</td>

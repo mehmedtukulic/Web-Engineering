@@ -24,8 +24,7 @@ const GranappNavbar = (props) => {
                     </Nav>
                     
                     <Form inline className="justify-content-center">
-                        <FormControl type="text" placeholder="Search for an item" className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
+                    <Button variant="primary" as={NavLink} to='/'>Log out</Button>
                     </Form>
                 </Navbar.Collapse>
             </Navbar>
