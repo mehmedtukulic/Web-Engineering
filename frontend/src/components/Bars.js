@@ -35,17 +35,39 @@ class Bars extends Component {
         
     renderTableData() {
         return this.state.products.map((product, index) => {
-           const { id, name, owner, contact, location } = product //destructuring
+           const { _id, name, owner, contact, location } = product //destructuring
            return (
-              <tr key={id}>
+              <tr key={_id}>
                  <td>{name}</td>
                  <td>{owner}</td>
                  <td>{contact}</td>
                  <td>{location}</td>
+                 <button type="button" class="btn btn-danger" onClick ={() => this.deleteBar(_id)}>Delete</button>
               </tr>
            )
         })
      }
+      
+     deleteBar = (id) => {
+        let products = this.state.products.filter(product => {
+            return product._id !== id
+        })
+        this.setState({
+          products: products   
+        })
+       
+        let jwtToken = window.localStorage.getItem("jwtToken");
+        Axios.delete(`${config.BASE_URL}/admin/bar/${id}`, 
+            { headers: { Authorization: jwtToken } }).then(response => {
+                console.log('Bar successfully removed.');
+                alert('Bar successfully removed');
+              //  this.props.history.push('/bars');
+            }).catch(error => {
+                console.log(error.response);
+            }).finally(() => {
+                console.log('Request completed.');
+            });
+    }
 
      renderTableHeader() {
         let header = Object.keys(this.state.products[0])

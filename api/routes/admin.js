@@ -34,5 +34,23 @@ module.exports = (router, db, mongojs, jwt, config) => {
         });
     });
      
+    router.post('/bar', (req, res) => {
+        db.bars.insert(req.body, function(err, doc){
+            if (err) {
+                res.status(400).json({ message: `Insertion failed. Reason: ${err.errmsg}` });
+            }
+            res.json(doc);
+        });
+    });
+
+    router.delete('/bar/:id', (req, res) => {
+        let id = req.params.id;
+        db.bars.remove({_id : mongojs.ObjectId(id)},[true], function(err, doc){
+            if (err) {
+                res.status(400).json({ message: `Deletion failed. Reason: ${err.errmsg}` });
+            }
+            res.json(doc);
+        });
+    });  
 
 }
