@@ -10,7 +10,7 @@
   "scripts": {
     "install": "cd api && npm install && cd ../frontend && npm install",
     "backend": "cd api && nodemon index.js",
-    "frontend": "cd frontend && NODE_ENV='development' npm start",
+    "frontend": "cd frontend && npm start",
     "dev": "concurrently --kill-others \"npm run backend\" \"npm run frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd frontend && npm run build && cd ../api && node index.js"
