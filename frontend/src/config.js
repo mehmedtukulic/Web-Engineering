@@ -5,6 +5,7 @@ if (process.env.NODE_ENV === 'development') {
     baseUrl = 'https://shisha-time.herokuapp.com'
 }
 
+
 module.exports = {
     BASE_URL: baseUrl
 }

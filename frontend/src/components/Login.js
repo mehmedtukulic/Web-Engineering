@@ -4,6 +4,8 @@ import {Button, Row} from 'react-bootstrap'
 import axios from 'axios'
 import config from './../config';
 import { Redirect } from 'react-router-dom'
+import Background from './Background';
+import './login.css'
 
 class Login extends Component {
 
@@ -43,31 +45,35 @@ class Login extends Component {
 
     render() {
         return (
-            <Form onSubmit = {this.handleSubmit} >
-                <Row className='justify-content-md-center'>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control onChange = {this.handleEmailChange} type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
-                    </Form.Group>
-                </Row>
+            <>
+                <Background />
+                <div className="login-box">
+                    <Form onSubmit = {this.handleSubmit} >
+                        <Row className='justify-content-md-center'>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control onChange = {this.handleEmailChange} type="email" placeholder="Enter email" />
+                                <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
+                        </Row>
 
-                <Row className='justify-content-md-center'>
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control onChange = {this.handlePasswordChange} type="password" placeholder="Password" />
-                    </Form.Group>
-                </Row>
+                        <Row className='justify-content-md-center'>
+                            <Form.Group className="w-100" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control onChange = {this.handlePasswordChange} type="password" placeholder="Password" />
+                            </Form.Group>
+                        </Row>
 
-                <Row className='justify-content-md-center'>
-                    <Button variant="primary" type="submit" onClick = {this.handleLogin}>
-                        Login
-                    </Button>
-                </Row>
-            </Form>
-            
+                        <Row className='justify-content-md-center'>
+                            <Button variant="primary" type="submit" onClick = {this.handleLogin}>
+                                Login
+                            </Button>
+                        </Row>
+                    </Form>
+                </div>
+            </>
         );
     }
 }

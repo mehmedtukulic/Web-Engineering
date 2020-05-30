@@ -4,6 +4,7 @@ import { Jumbotron, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Axios from 'axios';
 import config from './../config';
+import Background from './Background';
 
 class Home extends Component{
     constructor(props) {
@@ -32,6 +33,7 @@ class Home extends Component{
     render(){
         return (
             <div>
+                <Background />
                 <GranappNavbar />
                 <Jumbotron>
                 <h1>Number of users : <span style={{ color: '#157EFB' }}>{this.state.numberOfBars}</span></h1>

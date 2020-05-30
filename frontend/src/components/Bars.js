@@ -7,6 +7,7 @@ import Axios from 'axios';
 import config from './../config';
 //import 'react-bootstrap-table/css'
 import './../App.css'
+import Background from './Background';
 
 //import 'node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 class Bars extends Component {
@@ -14,7 +15,7 @@ class Bars extends Component {
         super(props);
 
         this.state = {
-            products : []
+            products: []
         };
     }
 
@@ -32,36 +33,36 @@ class Bars extends Component {
             console.log(`${this.state.products.length} items have been retrieved.`);
         });
     }
-        
+
     renderTableData() {
         return this.state.products.map((product, index) => {
-           const { _id, name, owner, contact, location } = product //destructuring
-           return (
-              <tr key={_id}>
-                 <td>{name}</td>
-                 <td>{owner}</td>
-                 <td>{contact}</td>
-                 <td>{location}</td>
-                 <button type="button" class="btn btn-danger" onClick ={() => this.deleteBar(_id)}>Delete</button>
-              </tr>
-           )
+            const { _id, name, owner, contact, location } = product //destructuring
+            return (
+                <tr key={_id}>
+                    <td>{name}</td>
+                    <td>{owner}</td>
+                    <td>{contact}</td>
+                    <td>{location}</td>
+                    <button type="button" class="btn btn-danger" onClick={() => this.deleteBar(_id)}>Delete</button>
+                </tr>
+            )
         })
-     }
-      
-     deleteBar = (id) => {
+    }
+
+    deleteBar = (id) => {
         let products = this.state.products.filter(product => {
             return product._id !== id
         })
         this.setState({
-          products: products   
+            products: products
         })
-       
+
         let jwtToken = window.localStorage.getItem("jwtToken");
-        Axios.delete(`${config.BASE_URL}/admin/bar/${id}`, 
+        Axios.delete(`${config.BASE_URL}/admin/bar/${id}`,
             { headers: { Authorization: jwtToken } }).then(response => {
                 console.log('Bar successfully removed.');
                 alert('Bar successfully removed');
-              //  this.props.history.push('/bars');
+                //  this.props.history.push('/bars');
             }).catch(error => {
                 console.log(error.response);
             }).finally(() => {
@@ -69,33 +70,33 @@ class Bars extends Component {
             });
     }
 
-     renderTableHeader() {
+    renderTableHeader() {
         let header = Object.keys(this.state.products[0])
         return header.map((key, index) => {
-           return <th key={index}>{key.toUpperCase()}</th>
+            return <th key={index}>{key.toUpperCase()}</th>
         })
-     }
-    
-     render() {
+    }
+
+    render() {
         return (
-           <div>
-               <GranappNavbar />
-              <table class="table table-hover" id="myTable">
-			<thead>
-			<tr>
-				<th>Ime Bara</th>
-				<th>Ime Vlasnika</th>
-				<th>Kontakt Vlasnika</th>
-				<th>Lokacija</th>
-			</tr>
-		</thead>
-			<tbody id="users-body">
-            {this.renderTableData()}
-			</tbody>
-		</table>
-           </div>
+            <div>
+                <GranappNavbar />
+                <table class="table table-hover" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Ime Bara</th>
+                            <th>Ime Vlasnika</th>
+                            <th>Kontakt Vlasnika</th>
+                            <th>Lokacija</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-body">
+                        {this.renderTableData()}
+                    </tbody>
+                </table>
+            </div>
         )
-     }
+    }
 
 }
 
