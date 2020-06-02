@@ -29,11 +29,11 @@ class Login extends Component {
     handleLogin = (e) => {
         e.preventDefault();
         console.log("handling submit");
-        
+
         axios.post(`${config.BASE_URL}/login`, this.state).then(response => {
             window.localStorage.setItem('jwtToken', response.data[0]);
           //  this.setState({ type: response.data[1] });
-            if(response.data[1] === 'admin')
+          //  if(response.data[1] === 'admin')
                 this.props.history.push('/home');
           }).catch((error) => {
               console.log(error);

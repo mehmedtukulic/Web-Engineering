@@ -10,7 +10,7 @@ import './../App.css'
 import Background from './Background';
 
 //import 'node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
-class Bars extends Component {
+class Adds extends Component {
     constructor(props) {
         super(props);
 
@@ -20,7 +20,7 @@ class Bars extends Component {
     }
 
     componentDidMount = () => {
-        Axios.get(`${config.BASE_URL}/public/bars`).then(response => {
+        Axios.get(`${config.BASE_URL}/public/adds`).then(response => {
             /* Use response.data to access the actual data */
             this.setState({
                 products: response.data
@@ -36,14 +36,12 @@ class Bars extends Component {
 
     renderTableData() {
         return this.state.products.map((product, index) => {
-            const { _id, name, owner, contact, location, BAR_ID } = product //destructuring
+            const { _id, bar_name, Image_url, bar_id } = product //destructuring
             return (
                 <tr key={_id}>
-                    <td>{BAR_ID}</td>
-                    <td>{name}</td>
-                    <td>{owner}</td>
-                    <td>{contact}</td>
-                    <td>{location}</td>
+                    <td>{bar_name}</td>
+                    <td>{bar_id}</td>
+                    <td>{Image_url}</td>
                     <button type="button" class="btn btn-danger" onClick={() => this.deleteBar(_id)}>Delete</button>
                 </tr>
             )
@@ -59,10 +57,10 @@ class Bars extends Component {
         })
 
         let jwtToken = window.localStorage.getItem("jwtToken");
-        Axios.delete(`${config.BASE_URL}/admin/bar/${id}`,
+        Axios.delete(`${config.BASE_URL}/admin/add/${id}`,
             { headers: { Authorization: jwtToken } }).then(response => {
-                console.log('Bar successfully removed.');
-                alert('Bar successfully removed');
+                console.log('Add successfully removed.');
+                alert('Add successfully removed');
                 //  this.props.history.push('/bars');
             }).catch(error => {
                 console.log(error.response);
@@ -85,11 +83,9 @@ class Bars extends Component {
                 <table class="table table-hover" id="myTable">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Ime Bara</th>
-                            <th>Ime Vlasnika</th>
-                            <th>Kontakt Vlasnika</th>
-                            <th>Lokacija</th>
+                            <th>ID Bara</th>
+                            <th class="urlwidth">URL</th>
                         </tr>
                     </thead>
                     <tbody id="users-body">
@@ -102,4 +98,4 @@ class Bars extends Component {
 
 }
 
-export default Bars;
+export default Adds;
