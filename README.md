@@ -1,9 +1,8 @@
 # Web-Engineering
 
 Login credentials :
-
-mehmed.tukulic@hotmail.com
-mehmed123
+email address : test
+password : test
 
 
 PROJECT DOCUMENTATION : 
