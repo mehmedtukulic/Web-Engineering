@@ -10,6 +10,8 @@ import Addbar from './components/Addbar'
 import Login from './components/Login'
 import Adds from './components/Adds'
 import NewAdd from './components/NewAdd'
+import giveaway from './components/giveaway'
+import giveawayAdd from './components/addGiveaway'
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
               <Route exact path='/bars/add' component={Addbar} />
               <Route exact path='/adds' component={Adds} />
               <Route exact path='/adds/new' component={NewAdd} />
+              <Route exact path='/giveaways' component={giveaway} />
+              <Route exact path='/giveaway/new' component={giveawayAdd} />
           </Switch>
       </div>
   );

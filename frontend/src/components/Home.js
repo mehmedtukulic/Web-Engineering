@@ -36,14 +36,14 @@ class Home extends Component{
                 <Background />
                 <GranappNavbar />
                 <Jumbotron>
-                <h1>Number of users : <span style={{ color: '#157EFB' }}>{this.state.numberOfBars}</span></h1>
+                <h1>Number of bars : <span style={{ color: '#157EFB' }}>{this.state.numberOfBars}</span></h1>
                 <p>
                     <Button variant="primary" as={NavLink} to='/bars'>View Bars</Button>
                 </p>
                 </Jumbotron>
             </div>
         )
-    } 
+    }
 }
 
 export default Home;

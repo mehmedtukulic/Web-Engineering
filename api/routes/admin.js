@@ -65,4 +65,18 @@ module.exports = (router, db, mongojs, jwt, config) => {
        });
    });
 
+   router.post('/giveaway/:day', (req, res) => {
+     let day = req.params.day
+     db.giveaway.update(
+     {day_name: day },
+     {
+        $push: { 'day_name.bar_ids' : req.body }
+     } , function(err, doc){
+          if (err) {
+              res.status(400).json({ message: `Insertion failed. Reason: ${err.errmsg}` });
+          }
+          res.json(doc);
+      });
+  });
+
 }

@@ -23,6 +23,8 @@ const GranappNavbar = (props) => {
                         <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/bars/add'>New Bar</Nav.Link>
                         <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/adds'>Adds</Nav.Link>
                         <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/adds/new'>New Add</Nav.Link>
+                        <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/giveaways'>Giveaways</Nav.Link>
+                        <Nav.Link activeStyle={{ color: '#157EFB' }} as={NavLink} exact to='/giveaway/new'>New GiveAway</Nav.Link>
                     </Nav>
 
                     <Form inline className="justify-content-center">

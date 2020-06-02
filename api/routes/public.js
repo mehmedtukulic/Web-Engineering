@@ -14,9 +14,9 @@ module.exports=(router, db , mongojs , jwt , config) =>{
       });
      });
 
-     router.get('/bar/:id', (req, res) => {
-         let ID = req.params.id;
-         db.bars.find({BAR_ID : ID} ,(error,docs) => {
+     router.get('/bar/:name', (req, res) => {
+      //   let ID = req.params.id;
+         db.bars.find({name : req.params.name},(error,docs) => {
           if (error) {
               throw error;
           }
@@ -51,5 +51,14 @@ module.exports=(router, db , mongojs , jwt , config) =>{
        res.json(docs)
       });
      });
+
+     router.get('/giveaways',(req,res)=>{
+       db.giveaway.find({} ,(error,docs) => {
+        if (error) {
+            throw error;
+        }
+        res.json(docs)
+       });
+      });
 
     }

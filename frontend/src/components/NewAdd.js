@@ -13,7 +13,7 @@ class NewAdd extends Component {
             bar_name: '',
             bar_id: '',
             Image_url: '',
-            bar: [ ]
+            bar: []
         };
     }
 
@@ -27,7 +27,7 @@ class NewAdd extends Component {
         event.preventDefault();
         let jwtToken = window.localStorage.getItem("jwtToken");
 
-            Axios.get(`${config.BASE_URL}/public/bar/${this.state.bar_id}`).then(response => {
+            Axios.get(`${config.BASE_URL}/public/bar/${this.state.bar_name}`).then(response => {
 
                 this.setState({
                     bar: response.data
