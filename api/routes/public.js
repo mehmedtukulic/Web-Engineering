@@ -53,12 +53,51 @@ module.exports=(router, db , mongojs , jwt , config) =>{
      });
 
      router.get('/giveaways',(req,res)=>{
-       db.giveaway.find({} ,(error,docs) => {
+       db.giveaways.find({} ,(error,docs) => {
         if (error) {
             throw error;
         }
         res.json(docs)
        });
+      });
+
+      router.get('/giveaways/:day', (req, res) => {
+          db.giveaways.find({day : req.params.day},(error,docs) => {
+           if (error) {
+               throw error;
+           }
+           res.json(docs)
+          });
+      });
+
+      router.post('/giveaway/:id/register/:competitor', (req, res) => {
+        let id = req.params.id;
+        db.giveaways.update(
+        {_id : mongojs.ObjectId(id)},
+        {
+           $push: { competitors : req.params.competitor }
+        } , function(err, doc){
+             if (err) {
+                 res.status(400).json({ message: `Insertion failed. Reason: ${err.errmsg}` });
+             }
+             res.json(doc);
+         });
+     });
+
+     router.post('/addwinner/:id/:email', (req, res) => {
+       let id = req.params.id;
+       let email = req.params.email;
+
+        db.giveaways.updateOne(
+        {_id : mongojs.ObjectId(id)},
+        {
+         $set: { winner : email , status : "done" }
+        } , function(err, doc){
+            if (err) {
+                 res.status(400).json({ message: `Insertion failed. Reason: ${err.errmsg}` });
+             }
+         res.json(doc);
+        });
       });
 
     }

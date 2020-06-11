@@ -65,18 +65,24 @@ module.exports = (router, db, mongojs, jwt, config) => {
        });
    });
 
-   router.post('/giveaway/:day', (req, res) => {
-     let day = req.params.day
-     db.giveaway.update(
-     {day_name: day },
-     {
-        $push: { 'day_name.bar_ids' : req.body }
-     } , function(err, doc){
+   router.post('/giveaway', (req, res) => {
+      db.giveaways.insert(req.body, function(err, doc){
           if (err) {
               res.status(400).json({ message: `Insertion failed. Reason: ${err.errmsg}` });
           }
           res.json(doc);
       });
   });
+
+  router.delete('/giveaway/:id', (req, res) => {
+      let id = req.params.id;
+      db.giveaways.remove({_id : mongojs.ObjectId(id)},[true], function(err, doc){
+          if (err) {
+              res.status(400).json({ message: `Deletion failed. Reason: ${err.errmsg}` });
+          }
+          res.json(doc);
+      });
+  });
+
 
 }

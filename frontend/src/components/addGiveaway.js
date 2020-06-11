@@ -11,7 +11,10 @@ class addGiveaway extends Component {
 
         this.state = {
             bar_name: '',
-            day_name: ''
+            day: '',
+            status: 'active',
+            winner: "TBA",
+            competitors: []
         };
     }
 
@@ -24,8 +27,8 @@ class addGiveaway extends Component {
     addNewBar = (event) => {
       event.preventDefault();
       let jwtToken = window.localStorage.getItem("jwtToken");
-      Axios.post(`${config.BASE_URL}/admin/giveaway/${this.state.day_name}`,
-          { bar_ids: this.state.bar_name},
+      Axios.post(`${config.BASE_URL}/admin/giveaway`,
+          { bar_name: this.state.bar_name, day: this.state.day, status: this.state.status, winner: this.state.winner, competitors: this.state.competitors},
           { headers: { Authorization: jwtToken } }).then(response => {
               console.log('Giveaway successfully added.');
               alert('Giveaway successfully added.');
@@ -53,7 +56,7 @@ class addGiveaway extends Component {
 
                                 <Form.Group>
                                     <Form.Label>Day:</Form.Label>
-                                    <Form.Control name='bar_id' onChange={this.handleChange} type="text" placeholder="Enter Day Name" />
+                                    <Form.Control name='day' onChange={this.handleChange} type="text" placeholder="Enter Day Name" />
                                 </Form.Group>
 
                                 <Button variant="success" type="submit" onClick={this.addNewBar}>

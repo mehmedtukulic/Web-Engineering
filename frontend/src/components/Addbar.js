@@ -13,7 +13,13 @@ class AddBar extends Component {
             name: '',
             owner: '',
             contact: '',
-            location: ''
+            location: '',
+            web_address: '',
+            email_address: '',
+            lat: '',
+            lng: '',
+            bar_logo: '',
+            bar_image: '',
         };
     }
 
@@ -27,7 +33,7 @@ class AddBar extends Component {
         event.preventDefault();
         let jwtToken = window.localStorage.getItem("jwtToken");
         Axios.post(`${config.BASE_URL}/admin/bar`,
-            { name: this.state.name, owner: this.state.owner, contact: this.state.contact, location: this.state.location },
+            { name: this.state.name, owner: this.state.owner, contact: this.state.contact, location: this.state.location, web_address: this.state.web_address, email_address: this.state.email_address, lat: this.state.lat, lng: this.state.lng, bar_logo: this.state.bar_logo , bar_image: this.state.bar_image },
             { headers: { Authorization: jwtToken } }).then(response => {
                 console.log('Bar successfully added.');
                 alert('Bar successfully added.');
@@ -65,6 +71,36 @@ class AddBar extends Component {
                                 <Form.Group>
                                     <Form.Label>Location:</Form.Label>
                                     <Form.Control name='location' onChange={this.handleChange} type="text" placeholder="Enter bar location" />
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Label>Web Address:</Form.Label>
+                                    <Form.Control name='web_address' onChange={this.handleChange} type="text" placeholder="Enter bar Web page" />
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Label>Email Address:</Form.Label>
+                                    <Form.Control name='email_address' onChange={this.handleChange} type="text" placeholder="Enter bar Email" />
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Label>Lattitude:</Form.Label>
+                                    <Form.Control name='lat' onChange={this.handleChange} type="text" placeholder="Enter bar Lattitude" />
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Label>Longitude:</Form.Label>
+                                    <Form.Control name='lng' onChange={this.handleChange} type="text" placeholder="Enter bar Longitude" />
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Label>Bar Logo</Form.Label>
+                                    <Form.Control name='bar_logo' onChange={this.handleChange} type="text" placeholder="Enter bar logo url" />
+                                </Form.Group>
+
+                                <Form.Group>
+                                    <Form.Label>Bar Image</Form.Label>
+                                    <Form.Control name='bar_image' onChange={this.handleChange} type="text" placeholder="Enter bar image url" />
                                 </Form.Group>
 
                                 <Button variant="success" type="submit" onClick={this.addNewBar}>

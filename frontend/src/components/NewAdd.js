@@ -11,9 +11,7 @@ class NewAdd extends Component {
 
         this.state = {
             bar_name: '',
-            bar_id: '',
-            Image_url: '',
-            bar: []
+            Image_url: ''
         };
     }
 
@@ -27,19 +25,8 @@ class NewAdd extends Component {
         event.preventDefault();
         let jwtToken = window.localStorage.getItem("jwtToken");
 
-            Axios.get(`${config.BASE_URL}/public/bar/${this.state.bar_name}`).then(response => {
-
-                this.setState({
-                    bar: response.data
-                });
-
-            }).catch(error => {
-                console.log(error.response);
-
-            }).finally(() => {
-
               Axios.post(`${config.BASE_URL}/admin/add`,
-                  { bar_name: this.state.bar_name, bar_id: this.state.bar_id, Image_url: this.state.Image_url, bar: this.state.bar },
+                  { bar_name: this.state.bar_name, Image_url: this.state.Image_url},
                   { headers: { Authorization: jwtToken } }).then(response => {
                       console.log('Add successfully added.');
                       alert('Add successfully added.');
@@ -49,10 +36,6 @@ class NewAdd extends Component {
                   }).finally(() => {
                       console.log('Request completed.');
                   });
-
-            });
-
-
     }
 
     render() {
@@ -66,11 +49,6 @@ class NewAdd extends Component {
                                 <Form.Group>
                                     <Form.Label>Name:</Form.Label>
                                     <Form.Control name='bar_name' onChange={this.handleChange} type="text" placeholder="Enter bar name" />
-                                </Form.Group>
-
-                                <Form.Group>
-                                    <Form.Label>ID:</Form.Label>
-                                    <Form.Control name='bar_id' onChange={this.handleChange} type="text" placeholder="Enter bar ID" />
                                 </Form.Group>
 
                                 <Form.Group>

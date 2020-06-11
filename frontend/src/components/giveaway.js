@@ -36,16 +36,40 @@ class Giveaway extends Component {
 
     renderTableData() {
         return this.state.products.map((product, index) => {
-            const { _id, day_name,bar_ids } = product //destructuring
+            const { _id, bar_name, day, status, competitors, winner } = product //destructuring
             return (
                 <tr key={_id}>
-                    <td>{day_name}</td>
-                    <td>{bar_ids}</td>
+                    <td>{bar_name}</td>
+                    <td>{day}</td>
+                    <td>{status}</td>
+                    <td>{competitors.length}</td>
+                    <td>{winner}</td>
+                    <button type="button" class="btn btn-danger" onClick={() => this.deleteBar(_id)}>Delete</button>
                 </tr>
             )
         })
     }
 
+    deleteBar = (id) => {
+        let products = this.state.products.filter(product => {
+            return product._id !== id
+        })
+        this.setState({
+            products: products
+        })
+
+        let jwtToken = window.localStorage.getItem("jwtToken");
+        Axios.delete(`${config.BASE_URL}/admin/giveaway/${id}`,
+            { headers: { Authorization: jwtToken } }).then(response => {
+                console.log('Add successfully removed.');
+                alert('Add successfully removed');
+                //  this.props.history.push('/bars');
+            }).catch(error => {
+                console.log(error.response);
+            }).finally(() => {
+                console.log('Request completed.');
+            });
+    }
 
     renderTableHeader() {
         let header = Object.keys(this.state.products[0])
@@ -61,8 +85,12 @@ class Giveaway extends Component {
                 <table class="table table-hover" id="myTable">
                     <thead>
                         <tr>
+                            <th>Ime Bara</th>
                             <th>Dan</th>
-                            <th>Barovi</th>
+                            <th>Status</th>
+                            <th>Broj ucesnika</th>
+                            <th>Pobjednik</th>
+
                         </tr>
                     </thead>
                     <tbody id="users-body">

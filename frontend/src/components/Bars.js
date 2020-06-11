@@ -36,14 +36,15 @@ class Bars extends Component {
 
     renderTableData() {
         return this.state.products.map((product, index) => {
-            const { _id, name, owner, contact, location, BAR_ID } = product //destructuring
+            const { _id, name, owner, contact, location, web_address, email_address } = product //destructuring
             return (
                 <tr key={_id}>
-                    <td>{BAR_ID}</td>
                     <td>{name}</td>
                     <td>{owner}</td>
                     <td>{contact}</td>
                     <td>{location}</td>
+                    <td>{web_address}</td>
+                    <td>{email_address}</td>
                     <button type="button" class="btn btn-danger" onClick={() => this.deleteBar(_id)}>Delete</button>
                 </tr>
             )
@@ -85,11 +86,12 @@ class Bars extends Component {
                 <table class="table table-hover" id="myTable">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Ime Bara</th>
-                            <th>Ime Vlasnika</th>
-                            <th>Kontakt Vlasnika</th>
-                            <th>Lokacija</th>
+                            <th>Bar Name</th>
+                            <th>Owner Name</th>
+                            <th>Contact</th>
+                            <th>Location</th>
+                            <th>Web Address</th>
+                            <th>Email Address</th>
                         </tr>
                     </thead>
                     <tbody id="users-body">

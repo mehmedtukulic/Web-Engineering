@@ -40,7 +40,6 @@ class Adds extends Component {
             return (
                 <tr key={_id}>
                     <td>{bar_name}</td>
-                    <td>{bar_id}</td>
                     <td>{Image_url}</td>
                     <button type="button" class="btn btn-danger" onClick={() => this.deleteBar(_id)}>Delete</button>
                 </tr>
