@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/mehmedtukulic/Web-Engineering#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "connect-timeout": "^1.9.0",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "mongojs": "^3.1.0"
   }
